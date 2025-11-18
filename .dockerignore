@@ -21,6 +21,8 @@ test/
 docker-compose.yml
 nginx.conf
 Dockerfile
+Dockerfile.web
+backend/Dockerfile
 linux/
 plataforma_proyectos_app.iml
 README.md

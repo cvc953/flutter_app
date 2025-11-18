@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   plataforma_web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.web
     image: plataforma_proyectos_app_web:latest
     ports:
       - "80:80"

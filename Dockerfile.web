@@ -6,13 +6,11 @@ WORKDIR /app
 COPY pubspec.* ./
 RUN flutter pub get
 
-# Copy only frontend source files
-COPY lib/ lib/
-COPY assets/ assets/
-COPY web/ web/
+# Copy only necessary Flutter files (explicitly exclude backend/)
+COPY lib ./lib
+COPY assets ./assets
+COPY web ./web
 COPY analysis_options.yaml ./
-COPY pubspec.yaml ./
-COPY pubspec.lock ./
 
 RUN flutter build web --release
 

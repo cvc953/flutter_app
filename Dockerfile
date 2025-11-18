@@ -10,7 +10,9 @@ RUN flutter pub get
 COPY lib/ lib/
 COPY assets/ assets/
 COPY web/ web/
-# Si tienes otros directorios necesarios para Flutter, agrégalos aquí
+COPY analysis_options.yaml ./
+COPY pubspec.yaml ./
+COPY pubspec.lock ./
 
 RUN flutter build web --release
 

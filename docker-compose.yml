@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  plataforma_web:
+    build: .
+    image: plataforma_proyectos_app_web:latest
+    ports:
+      - "80:80"
+    restart: unless-stopped

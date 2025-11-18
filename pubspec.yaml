@@ -1,0 +1,26 @@
+name: plataforma_proyectos_app
+description: Cliente Flutter (MVC) para la API de gestión de proyectos escolares
+publish_to: 'none'
+version: 0.0.1
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.6
+  provider: ^6.0.5
+  file_picker: ^5.0.0
+  url_launcher: ^6.1.7
+  shared_preferences: ^2.0.15
+  google_fonts: ^4.0.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/illustration.png
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+

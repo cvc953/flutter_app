@@ -1,0 +1,24 @@
+# Dart & Flutter
+.dart_tool/
+build/
+.packages
+pubspec.lock
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Git
+.git
+
+# Platform folders not needed for web build
+android/
+ios/
+macos/
+windows/
+linux/
+
+# Misc
+*.log
+*.tmp

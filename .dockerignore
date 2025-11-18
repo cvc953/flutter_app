@@ -19,7 +19,6 @@ test/
 *.db
 *.iml
 docker-compose.yml
-nginx.conf
 Dockerfile
 Dockerfile.web
 backend/Dockerfile

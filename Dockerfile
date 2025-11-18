@@ -1,13 +1,17 @@
-FROM ghcr.io/cirrusci/flutter:stable AS builder
+FROM cirrusci/flutter:latest AS builder
 
 WORKDIR /app
 
-# Copy pubspec first to leverage layer caching
+# Copy pubspec files and get dependencies
 COPY pubspec.* ./
 RUN flutter pub get
 
-# Copy the rest and build web
-COPY . .
+# Copy only frontend source files
+COPY lib/ lib/
+COPY assets/ assets/
+COPY web/ web/
+# Si tienes otros directorios necesarios para Flutter, agrégalos aquí
+
 RUN flutter build web --release
 
 FROM nginx:stable-alpine

@@ -13,7 +13,6 @@ pubspec.lock
 .git
 
 # Platform folders not needed for web build
-backend/
 build/
 test/
 *.db
@@ -21,7 +20,6 @@ test/
 docker-compose.yml
 Dockerfile
 Dockerfile.web
-backend/Dockerfile
 linux/
 plataforma_proyectos_app.iml
 README.md

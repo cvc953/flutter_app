@@ -1,0 +1,26 @@
+# Dart & Flutter
+.dart_tool/
+.packages
+pubspec.lock
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Git
+.git
+
+# Platform folders not needed for web build
+test/
+*.db
+*.iml
+docker-compose.yml
+Dockerfile
+linux/
+plataforma_proyectos_app.iml
+README.md
+README_DOCKER_AZURE.md
+native_assets/
+unit_test_assets/
+*.tmp

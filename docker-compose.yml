@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  plataforma_web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    image: plataforma_proyectos_app_web:latest
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: plataforma_proyectos_api:latest
+    environment:
+      - PORT=8000
+      - DATABASE_URL=sqlite:///./backend.db
+      - JWT_SECRET=${JWT_SECRET:-supersecretjwtkey}
+    ports:
+      - "8000:8000"
+    volumes:
+      - api_data:/app/backend/storage
+    restart: unless-stopped
+
+volumes:
+  api_data:

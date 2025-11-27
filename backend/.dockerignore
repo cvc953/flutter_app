@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.git
+.gitignore
+backend/storage/assignments/*
+backend/storage/submissions/*
+*.db

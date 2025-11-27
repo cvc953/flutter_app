@@ -34,3 +34,8 @@ Notas y próximos pasos recomendados:
 - Añadir vistas de detalle de proyecto para ver historial y descargar archivos.
 - Añadir tests unitarios y de integración.
 
+## Despliegue
+
+Para instrucciones completas de despliegue (local, Docker, Azure y recomendaciones de producción), consulta `DEPLOYMENT.md` en la raíz del repositorio.
+
+

@@ -6,14 +6,22 @@ WORKDIR /app
 RUN useradd -m builder || true
 
 # Copy only pubspec first to leverage layer caching for dependencies
+
+# Copy pubspec and prepare ownership
 COPY pubspec.* ./
 
 # Ensure the /app is owned by the non-root user before running pub get
 RUN chown -R builder:builder /app
 
+# Make the Flutter SDK safe for non-root Git operations and allow builder to access SDK files.
+# Some base images include the SDK at /sdks/flutter owned by root; configure Git and permissions
+# so the non-root `builder` user can run `flutter pub get` without errors.
+RUN if command -v git >/dev/null 2>&1; then git config --system --add safe.directory /sdks/flutter || true; fi
+RUN chown -R builder:builder /sdks/flutter || true
+
 # Run dependency fetch as non-root
 USER builder
-RUN flutter pub get
+RUN flutter pub get || (echo "flutter pub get failed as builder; printing sdk ownership and git status" && ls -la /sdks && git --no-pager status --porcelain -v /sdks/flutter || true ; false)
 
 # Switch back to root to copy the rest of the repository (keeps permissions controllable)
 USER root

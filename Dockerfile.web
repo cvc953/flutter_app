@@ -2,14 +2,28 @@ FROM cirrusci/flutter:stable AS builder
 
 WORKDIR /app
 
+# Create a non-root user and ensure ownership to avoid running flutter as root
+RUN useradd -m builder || true
+
 # Copy only pubspec first to leverage layer caching for dependencies
 COPY pubspec.* ./
+
+# Ensure the /app is owned by the non-root user before running pub get
+RUN chown -R builder:builder /app
+
+# Run dependency fetch as non-root
+USER builder
 RUN flutter pub get
 
-# Copy the rest of the project
-COPY . .
+# Switch back to root to copy the rest of the repository (keeps permissions controllable)
+USER root
 
-# Build web release
+# Copy the rest of the project and set ownership for the builder user
+COPY . .
+RUN chown -R builder:builder /app
+
+# Build web release as the non-root builder user
+USER builder
 RUN flutter build web --release
 
 FROM nginx:stable-alpine

@@ -356,7 +356,7 @@ class _CoursesViewState extends State<CoursesView> {
           ),
           const SizedBox(height: 8),
           if (_loading) const Center(child: CircularProgressIndicator()),
-          if (_error != null) Text('Error: $_error'),
+          _error != null ? Text('Error: ${_error}') : const SizedBox.shrink(),
           Expanded(
             child:
                 _courses.isEmpty

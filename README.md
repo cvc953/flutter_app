@@ -1,5 +1,7 @@
 # EduProjects - Cliente Flutter para API de Gestión de Proyectos Escolares
 
+**EduProjects** es una plataforma moderna de gestión de proyectos escolares que permite a estudiantes y profesores administrar entregas, calificaciones y seguimiento de proyectos académicos.
+
 Este es un scaffold mínimo (arquitectura MVC simple) para un cliente Flutter que consume la API que se encuentra en `app/`.
 
 Supuestos importantes:

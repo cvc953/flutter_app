@@ -64,7 +64,7 @@ class _AppShellState extends State<AppShell> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: AppColors.accent,
-            title: const Text('Plataforma de Proyectos'),
+            title: const Text('EduProjects'),
             actions: [
               IconButton(
                   onPressed: () {
@@ -134,7 +134,7 @@ class _AppShellState extends State<AppShell> {
                         children: const [
                           Text('Colegio Digital',
                               style: TextStyle(fontWeight: FontWeight.w700)),
-                          Text('Plataforma de entregas',
+                          Text('EduProjects',
                               style: TextStyle(
                                   color: AppColors.muted, fontSize: 12))
                         ])

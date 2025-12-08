@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SelectedProjectController()),
       ],
       child: MaterialApp(
-        title: 'Plataforma Proyectos',
+        title: 'EduProjects',
         theme: buildAppTheme(),
         initialRoute: '/',
         routes: {

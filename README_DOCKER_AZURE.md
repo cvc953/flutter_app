@@ -15,13 +15,13 @@ Construir la imagen localmente:
 
 ```bash
 cd /ruta/al/proyecto
-docker build -t plataforma_proyectos_app_web:latest .
+docker build -t eduprojects_web:latest .
 ```
 
 Ejecutar la imagen:
 
 ```bash
-docker run -d --name plataforma_web -p 80:80 plataforma_proyectos_app_web:latest
+docker run -d --name eduprojects_web -p 80:80 eduprojects_web:latest
 ```
 
 O con docker-compose:
@@ -56,28 +56,28 @@ Si prefieres desplegar la imagen desde un registry (Docker Hub, ACR):
 
 ```bash
 # En tu máquina local
-docker build -t myregistry/plataforma_proyectos_app_web:latest .
-docker push myregistry/plataforma_proyectos_app_web:latest
+docker build -t myregistry/eduprojects_web:latest .
+docker push myregistry/eduprojects_web:latest
 
 # En la VM
-docker pull myregistry/plataforma_proyectos_app_web:latest
-docker run -d --name plataforma_web -p 80:80 --restart unless-stopped myregistry/plataforma_proyectos_app_web:latest
+docker pull myregistry/eduprojects_web:latest
+docker run -d --name eduprojects_web -p 80:80 --restart unless-stopped myregistry/eduprojects_web:latest
 ```
 
 3) (Opcional) Unit systemd para gestión como servicio
 
-Guardar `/etc/systemd/system/plataforma_web.service` con:
+Guardar `/etc/systemd/system/eduprojects_web.service` con:
 
 ```ini
 [Unit]
-Description=Plataforma Proyectos App (Docker container)
+Description=EduProjects App (Docker container)
 After=docker.service
 Requires=docker.service
 
 [Service]
 Restart=always
-ExecStart=/usr/bin/docker run --rm --name plataforma_web -p 80:80 myregistry/plataforma_proyectos_app_web:latest
-ExecStop=/usr/bin/docker stop -t 10 plataforma_web
+ExecStart=/usr/bin/docker run --rm --name eduprojects_web -p 80:80 myregistry/eduprojects_web:latest
+ExecStop=/usr/bin/docker stop -t 10 eduprojects_web
 
 [Install]
 WantedBy=multi-user.target
@@ -87,7 +87,7 @@ Recargar systemd y habilitar:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable --now plataforma_web.service
+sudo systemctl enable --now eduprojects_web.service
 ```
 
 4) Notas y recomendaciones

@@ -29,10 +29,10 @@ uvicorn backend.main:app --reload
 
 ```bash
 # Construir imagen
-docker build -f backend/Dockerfile -t plataforma_proyectos_api:latest .
+docker build -f backend/Dockerfile -t eduprojects_api:latest .
 
 # Ejecutar contenedor
-docker run -p 8000:8000 plataforma_proyectos_api:latest
+docker run -p 8000:8000 eduprojects_api:latest
 ```
 
 Con `docker-compose` (frontend web + backend API):
@@ -54,10 +54,10 @@ az acr login -n eduplataformaacr
 2. Etiquetar y subir imágenes:
 ```bash
 ACR=eduplataformaacr.azurecr.io
-docker build -f backend/Dockerfile -t $ACR/plataforma_api:latest .
-docker build -t $ACR/plataforma_web:latest .
-docker push $ACR/plataforma_api:latest
-docker push $ACR/plataforma_web:latest
+docker build -f backend/Dockerfile -t $ACR/eduprojects_api:latest .
+docker build -t $ACR/eduprojects_web:latest .
+docker push $ACR/eduprojects_api:latest
+docker push $ACR/eduprojects_web:latest
 ```
 3. Crear App Service plano (Linux):
 ```bash

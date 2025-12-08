@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:plataforma_proyectos_app/models/user.dart';
+import 'package:eduprojects/models/user.dart';
 
 void main() {
   test('User.fromJson prefers "rol" field and builds nombreCompleto', () {

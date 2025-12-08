@@ -207,7 +207,7 @@ Este proyecto está en desarrollo activo. Para contribuir:
 
 ## Licencia
 
-Este proyecto es de código abierto y está disponible para uso educativo.
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ## Soporte
 

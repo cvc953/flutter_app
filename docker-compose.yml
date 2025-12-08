@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  plataforma_web:
+  eduprojects_web:
     build:
       context: .
       dockerfile: Dockerfile.web
-    image: plataforma_proyectos_app_web:latest
+    image: eduprojects_web:latest
     ports:
       - "80:80"
     restart: unless-stopped
@@ -14,7 +14,7 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    image: plataforma_proyectos_api:latest
+    image: eduprojects_api:latest
     environment:
       - PORT=8000
       - DATABASE_URL=sqlite:///./backend.db

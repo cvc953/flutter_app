@@ -3,7 +3,7 @@
 Esta guía describe cómo desplegar la aplicación completa (frontend Flutter y backend FastAPI) en varios entornos: localmente, con Docker (docker-compose) y opcionalmente en Azure o un registry de contenedores. Está escrita en español y busca ser práctica para desarrolladores y para entornos de producción básicos.
 
 ## Resumen de la arquitectura
-- Frontend: app Flutter (compila a `build/web` para la versión web). Se sirve con `nginx` en el contenedor `plataforma_web`.
+- Frontend: app Flutter (compila a `build/web` para la versión web). Se sirve con `nginx` en el contenedor `eduprojects_web`.
 - Backend: API FastAPI (puerto `8000`) en el contenedor `api`.
 - Orquestación local: `docker-compose.yml` en la raíz crea ambos servicios.
 
@@ -71,7 +71,7 @@ Servicios expuestos:
 ```bash
 docker compose ps
 docker compose logs -f api
-docker compose logs -f plataforma_web
+docker compose logs -f eduprojects_web
 ```
 
 3) Volúmenes y persistencia
@@ -96,20 +96,20 @@ Y asegúrate de configurar el firewall y crear la base de datos y usuario antes 
 
 ```bash
 # desde la raíz
-docker build -f Dockerfile.web -t myregistry/plataforma_web:latest .
-docker build -f backend/Dockerfile -t myregistry/plataforma_api:latest .
-docker push myregistry/plataforma_web:latest
-docker push myregistry/plataforma_api:latest
+docker build -f Dockerfile.web -t myregistry/eduprojects_web:latest .
+docker build -f backend/Dockerfile -t myregistry/eduprojects_api:latest .
+docker push myregistry/eduprojects_web:latest
+docker push myregistry/eduprojects_api:latest
 ```
 
 2) En la máquina de producción (VM, servidor o servicio de contenedores):
 
 ```bash
-docker pull myregistry/plataforma_web:latest
-docker pull myregistry/plataforma_api:latest
-docker run -d --name plataforma_web -p 80:80 myregistry/plataforma_web:latest
-docker run -d --name plataforma_api -p 8000:8000 \
-  -e DATABASE_URL="<tu-db>" -e JWT_SECRET="<secreto>" myregistry/plataforma_api:latest
+docker pull myregistry/eduprojects_web:latest
+docker pull myregistry/eduprojects_api:latest
+docker run -d --name eduprojects_web -p 80:80 myregistry/eduprojects_web:latest
+docker run -d --name eduprojects_api -p 8000:8000 \
+  -e DATABASE_URL="<tu-db>" -e JWT_SECRET="<secreto>" myregistry/eduprojects_api:latest
 ```
 
 O bien usar `docker compose` con el `docker-compose.yml` (ajústalo para apuntar a las imágenes del registry si quieres).
@@ -126,8 +126,8 @@ Comandos útiles (ACR):
 
 ```bash
 az acr login -n <acr-name>
-docker tag plataforma_proyectos_api:latest <acr-name>.azurecr.io/plataforma_api:latest
-docker push <acr-name>.azurecr.io/plataforma_api:latest
+docker tag eduprojects_api:latest <acr-name>.azurecr.io/eduprojects_api:latest
+docker push <acr-name>.azurecr.io/eduprojects_api:latest
 ```
 
 Luego crear un App Service o VM y apuntar al contenedor. Para App Service, configura variables de aplicación (`DATABASE_URL`, `JWT_SECRET`) desde `az webapp config appsettings set`.

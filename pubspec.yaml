@@ -1,5 +1,5 @@
-name: plataforma_proyectos_app
-description: Cliente Flutter (MVC) para la API de gestión de proyectos escolares
+name: eduprojects
+description: EduProjects - Cliente Flutter (MVC) para la API de gestión de proyectos escolares
 publish_to: 'none'
 version: 0.0.1
 environment:

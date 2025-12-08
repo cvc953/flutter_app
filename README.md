@@ -1,4 +1,4 @@
-# Flutter client para API de Gestión de Proyectos Escolares
+# EduProjects - Cliente Flutter para API de Gestión de Proyectos Escolares
 
 Este es un scaffold mínimo (arquitectura MVC simple) para un cliente Flutter que consume la API que se encuentra en `app/`.
 
@@ -66,7 +66,7 @@ docker compose ps
 
 ```bash
 docker compose logs -f api
-docker compose logs -f plataforma_web
+docker compose logs -f eduprojects_web
 ```
 
 5. Parar y eliminar contenedores (cuando quieras detenerlos):

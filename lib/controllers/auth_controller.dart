@@ -29,13 +29,14 @@ class AuthController extends ChangeNotifier {
     _token = resp['access_token'];
     ApiService.setToken(_token);
     // persist token for session restore
+    // Extract user ID once to avoid duplication
+    final uidTemp = resp['usuario_id'] ?? resp['user_id'] ?? resp['id'] ?? 0;
+    final uid =
+        (uidTemp is int) ? uidTemp : int.tryParse(uidTemp.toString()) ?? 0;
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('auth_token', _token ?? '');
       // also persist basic user info returned by API
-      final uidTemp = resp['usuario_id'] ?? resp['user_id'] ?? resp['id'] ?? 0;
-      final uid =
-          (uidTemp is int) ? uidTemp : int.tryParse(uidTemp.toString()) ?? 0;
       await prefs.setInt('user_id', uid);
       if (resp['email'] != null)
         await prefs.setString('user_email', resp['email']);
@@ -53,7 +54,6 @@ class AuthController extends ChangeNotifier {
       // ignore: avoid_print
       print('[AuthController] prefs write error: $e');
     }
-    final uid = resp['usuario_id'] ?? resp['user_id'] ?? resp['id'] ?? 0;
     // Prefer role returned by the API (campo 'rol' o 'role'). Fall back to probing endpoints if missing.
     String? roleFromResp = resp['rol'] ?? resp['role'];
     String? finalRole = roleFromResp;

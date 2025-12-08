@@ -141,7 +141,7 @@ docker push miregistry/eduprojects_api:latest
 ## Estructura del Proyecto
 
 ```
-flutter_app/
+.
 ├── lib/                    # Código fuente Flutter
 │   ├── models/            # Modelos de datos
 │   ├── views/             # Vistas de usuario
@@ -152,10 +152,12 @@ flutter_app/
 │   ├── routers/          # Rutas de la API
 │   ├── models.py         # Modelos de base de datos
 │   ├── schemas.py        # Schemas Pydantic
+│   ├── main.py           # Punto de entrada
 │   └── requirements.txt  # Dependencias Python
 ├── assets/               # Recursos estáticos
 ├── web/                  # Configuración web de Flutter
 ├── docker-compose.yml    # Orquestación de servicios
+├── Dockerfile.web        # Dockerfile para frontend
 └── pubspec.yaml         # Dependencias Flutter
 ```
 
